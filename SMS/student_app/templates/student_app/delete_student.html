@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Delete Student</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/add_stu.css' %}">
+<link rel="stylesheet" href="{% static 'css/delete_stu.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="container">
+    <h1>Delete Student Details</h1>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Are You Sure Want To Delete {{obj.stu_id}} record ?</h2>
+        <h3>{{obj.first_name | title}} {{obj.last_name | title}}</h3>
+        <button type="submit" class="btn btn-outline-dark col-5">Delete Student</button>
+        <a href="{% url 'Show_Student' %}"><button type="button" class="btn btn-outline-dark col-5 float-end">Cancel Student</button></a>
+    </form>
+</div>
+{% endblock content %}

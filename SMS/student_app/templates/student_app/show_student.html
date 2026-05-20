@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Show Student</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/show_stu.css' %}">
+{% endblock css %}
+
+{% block content %}
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>STU ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>AGE</th>
+            <th>GENDER</th>
+            <th>COURSE PURCHASE</th>
+            <th>MOBILE NO</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+            <th>IS_GRADUATED</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in objs %}
+        <tr>
+            <td>{{obj.stu_id}}</td>
+            <td>{{obj.first_name}}</td>
+            <td>{{obj.last_name}}</td>
+            <td>{{obj.age}}</td>
+            <td>{{obj.gender}}</td>
+            <td>{{obj.course_purchase}}</td>
+            <td>{{obj.mobile_no}}</td>
+            <td>{{obj.email}}</td>
+            <td>{{obj.password}}</td>
+            <td>{{obj.is_graduate}}</td>
+            <td>
+                <a href="{% url 'Update_Student' obj.stu_id %}"><button
+                        class="btn btn-outline-light btn-large">UPDATE</button></a>
+                <a href="{% url 'Delete_Student' obj.stu_id %}"><button class="btn btn-outline-light btn-large">DELETE</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
